@@ -5,9 +5,9 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.mixpanel.android.mpmetrics.MixpanelAPI
 import org.json.JSONObject
 
-class AnalyticsHandler(
-    var firebaseAnalytics: FirebaseAnalytics?,
-    var mixPanel: MixpanelAPI?
+public class AnalyticsHandler(
+    private var firebaseAnalytics: FirebaseAnalytics?,
+    private var mixPanel: MixpanelAPI?
 ) : IAnalyticsHandler {
 
     companion object{
