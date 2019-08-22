@@ -6,8 +6,8 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI
 import org.json.JSONObject
 
 public class AnalyticsHandler(
-    private var firebaseAnalytics: FirebaseAnalytics?,
-    private var mixPanel: MixpanelAPI?
+     val firebaseAnalytics: FirebaseAnalytics?,
+     val mixPanel: MixpanelAPI?
 ) : IAnalyticsHandler {
 
     companion object{
@@ -27,6 +27,16 @@ public class AnalyticsHandler(
             properties.put("screenLaunch", eventName)
             track(eventLaunchedScreen,properties)
         }
+    }
+
+
+    data class Builder(
+        var firebaseAnalytics: FirebaseAnalytics? = null,
+        var mixPanel: MixpanelAPI? = null) {
+
+        fun firebase(firebaseAnalytics: FirebaseAnalytics) = apply { this.firebaseAnalytics = firebaseAnalytics }
+        fun mixPanel(mixPanel: MixpanelAPI) = apply { this.mixPanel = mixPanel }
+        fun build() = AnalyticsHandler(firebaseAnalytics,mixPanel)
     }
 
 }
