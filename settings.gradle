@@ -1,0 +1,2 @@
+include ':app', ':analyticshandler'
+rootProject.name='My Application'
