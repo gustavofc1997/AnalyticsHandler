@@ -10,6 +10,10 @@ public class AnalyticsHandler(
      val mixPanel: MixpanelAPI?
 ) : IAnalyticsHandler {
 
+    override fun logButtonClick(screenName: String, buttonLabel: String) {
+        val eventName = "click_" + screenName + "_" + buttonLabel
+    }
+
     companion object{
         const val eventLaunchedScreen = "eventLaunchedScreen"
     }
@@ -29,6 +33,13 @@ public class AnalyticsHandler(
         }
     }
 
+    override fun logCustomEvent(
+        screenName: String,
+        eventLabel: String,
+        additionalProperties: Map<String, String>?
+    ) {
+        val eventName = "custom_" + screenName + "_" + eventLabel
+    }
 
     data class Builder(
         var firebaseAnalytics: FirebaseAnalytics? = null,
